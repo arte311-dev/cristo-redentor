@@ -89,4 +89,4 @@ Se proporcionarán guías para aquellos interesados en contribuir al desarrollo 
 
 ## Contacto
 
-Para cualquier pregunta o sugerencia, por favor contactar a [Tu Nombre/Contacto].
+Para cualquier pregunta o sugerencia, por favor contactar a Arturo Garcia Raygoza, arte311@gmail.com.
