@@ -18,11 +18,11 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { z } from "zod"
-import { useTransition } from "react"
+import { useState, useTransition } from "react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import { authClient } from "@/lib/auth-client"
-import { Loader2, LogIn } from "lucide-react"
+import { EyeIcon, EyeOffIcon, Loader2, LogIn } from "lucide-react"
 
 /* import { Label } from "@/components/ui/label"
 import { authClient } from "@/lib/auth-client"
@@ -41,12 +41,18 @@ const formSchema = z.object({
 
 const LoginForm = () => {
   const router = useRouter()
+  const [showPassword, setShowPassword] = useState(false)
+  const [loginPending, startLoginTransition] = useTransition()
+
   /*
   const [githubPending, startGithubTransition] = useTransition()
   const [emailPending, startEmailTransition] = useTransition()
-  const [email, setEmail] = useState("") */
+  const [email, setEmail] = useState("") 
+  */
 
-  const [loginPending, startLoginTransition] = useTransition()
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  }
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -205,14 +211,25 @@ const LoginForm = () => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor="password">Contraseña</FieldLabel>
-                    <Input
-                      {...field}
-                      id="password"
-                      aria-invalid={fieldState.invalid}
-                      placeholder="********"
-                      autoComplete="password"
-                      type="password"
-                    />
+                    <div className="relative flex items-center">
+                      <Input
+                        {...field}
+                        id="password"
+                        aria-invalid={fieldState.invalid}
+                        placeholder="********"
+                        autoComplete="password"
+                        type={showPassword ? "text" : "password"}
+                        className="pr-10"
+                      />
+                      <Button
+                        type="button"
+                        variant={"ghost"}
+                        onClick={togglePasswordVisibility}
+                        className="absolute right-2 p-1"
+                      >
+                        {showPassword ? (<EyeIcon className="size-4" />) : (<EyeOffIcon className="size-4" />)}
+                      </Button>
+                    </div>
                   </Field>
                 )}
               />
