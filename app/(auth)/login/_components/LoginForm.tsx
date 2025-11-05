@@ -71,7 +71,7 @@ const LoginForm = () => {
         fetchOptions: {
           onSuccess: () => {
             toast.success("Inicio de sesion exitoso")
-            router.push("/")
+            router.push("/admin")
           },
           onError: (error) => {
             toast.error(`Error al iniciar sesión: ${error.error.message}`)
