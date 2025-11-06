@@ -90,7 +90,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <Image
                   src={Logo}
                   alt="Logo"
-                  className="size-8 invert"
+                  className="size-12 invert-0 dark:invert"
                 />
                 <span className="text-base font-semibold"> Cristo Redentor</span>
               </Link>
