@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { ThemeToggle } from './ui/theme-toggle'
 import { authClient } from '@/lib/auth-client'
-import UserDropdown from './_components/UserDropdown'
+import UserDropdown from './UserDropdown'
 
 /* const menuItems = [
         { name: 'Features', href: '#link' },
